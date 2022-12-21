@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check BMI</title>
+</head>
+
+<body>
+    <div class="container">
+        <label>請輸入身高：<input type="text" id="inputTextH"></label>
+        <label>請輸入體重：<input type="text" id="inputTextW"> </label>
+        <button type="button" id="btn">送出</button>
+    </div>
+
+    <script>
+        let user_Height = document.getElementById("inputTextH");
+        let user_Weight = document.getElementById("inputTextW");
+        const btnClick = document.getElementById("btn");
+
+        btnClick.addEventListener("click", function () {
+            let weight = Number(user_Weight.value);
+            let height = Number(user_Height.value);
+            let height_m = height / 100;
+            let bmi = (weight / (height_m ^ 2)).toFixed(2);
+
+            if (bmi < 18.5) {
+                window.alert(`BMI值為${bmi}，體重過輕！請多吃點`);
+            } else if (18.5 <= bmi && bmi < 24) {
+                window.alert(`BMI值為${bmi}，體重正常～繼續保持`);
+            } else if (bmi <= 24 && bmi < 27) {
+                window.alert(`BMI值為${bmi}，體重過重QQ`);
+            } else (bmi >= 35)
+            window.alert(`BMI值為${bmi}，您太胖了：（`);
+        })
+    </script>
+</body>
+
+</html>

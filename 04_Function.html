@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //BMI
+        function calculateBmi(heigjt, weight) {
+            let height_m = height / 100;
+            let bmi = (weight / (height_m ^ 2)).toFixed(2);
+            return bmi
+        }
+        let user_Height = document.getElementById("inputTextH");
+        let user_Weight = document.getElementById("inputTextW");
+        const btnClick = document.getElementById("btn");
+
+        btnClick.addEventListener("click", function () {
+            let weight = Number(user_Weight.value);
+            let height = Number(user_Height.value);
+            let bmi = calculateBmi(height, weight);
+
+            if (bmi < 18.5) {
+                window.alert(`BMI值為${bmi}，體重過輕！請多吃點`);
+            } else if (18.5 <= bmi && bmi < 24) {
+                window.alert(`BMI值為${bmi}，體重正常～繼續保持`);
+            } else if (bmi <= 24 && bmi < 27) {
+                window.alert(`BMI值為${bmi}，體重過重QQ`);
+            } else (bmi >= 35)
+            window.alert(`BMI值為${bmi}，您太胖了：（`);
+        })
+
+        //Christmass Tree
+        // let nLayers = 8; 
+        // function drawTree(layerNo) {
+        //     document.write('<tt>');
+        //     for (let j = 1; j <= nLayers - layerNo; j++) {  //空格
+        //         document.write('&nbsp')
+        //     }
+        //     for (let k = 1; k <= 2 * layerNo - 1; k++) {  //總共 2*layNo-1 個 ^
+        //         document.write('^')
+        //     }
+        //     document.write('</tt>');
+        //     document.write('<br/>');//每跑一層斷行一次
+        // }
+        
+        // for (let i = 1; i <= nLayers; i++) {  
+        //     drawTree(i); 
+        // }
+        // for (let r = 1; r <= 2; r++) { 
+        //     drawTree(1); 
+        // }
+
+        //Guess Number//
+        // function randomNum() {
+        //     return Math.floor(Math.random() * 100) + 1
+        // }
+
+        // let answer = randomNum()
+        // let g1 = 0;
+        // let g2 = 100;
+        // let done = false
+
+        // while (!done) {
+        //     let guessAns = prompt(`猜數字～請輸入${g1}-${g2}的數字，不玩請輸入0離開遊戲`)
+        //     if (guessAns == 0)
+        //         done = true;
+        //     else if (guessAns < script answer) { alert(`數字太小了，請輸入${g1}-${g2}的數字！`); } else if (guessAns > answer) {
+        //         alert(`數字太大了，請輸入${g1}-${g2}的數字！`);
+        //     } else if (guessAns == answer) {
+        //         (`恭喜猜中了！答案是${answer}`);
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

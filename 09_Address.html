@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>address</title>
+</head>
+<select id="select1"></select>
+<select id="selectArea"></select>
+<select id="selectRoad"></select>
+
+<body>
+    <script src="address.js"></script>
+    <script>
+        let sel = document.querySelector("#select1");
+        let selArea = document.querySelector("#selectArea");
+        let selRoad = document.querySelector("#selectRoad")
+
+        ADDRESS.forEach((value, index, array) => {
+            let { CityName, CityEngName } = value;
+            sel[index] = new Option(CityName, CityName);
+        });
+
+        sel.addEventListener("change", () => {
+            selArea.options.length = 0;
+            selRoad.options.length = 0;
+            let city = sel.options[sel.selectedIndex].value;
+            let areas = ADDRESS.filter((value, index, array) => value.CityName === city);
+            areas[0].AreaList.forEach((value, index, array) => {
+                let { ZipCode, AreaName } = value;
+                selArea[index] = new Option(AreaName, ZipCode);
+            });
+        });
+
+        selArea.addEventListener("change", () => {
+            selRoad.options.length = 0;
+            let city = sel.options[sel.selectedIndex].value;
+            let areas = ADDRESS.filter((value, index, array) => value.CityName === city);
+            let roads = areas[0].AreaList[selArea.selectedIndex];
+            roads.RoadList.forEach((value, index, array) => {
+                let { RoadName, RoadEngName } = value;
+                selRoad[index] = new Option(RoadName, RoadName);
+            });
+            // console.log(areas);
+        });
+
+        
+
+    </script>
+</body>
+
+</html>

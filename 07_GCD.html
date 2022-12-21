@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCD</title>
+</head>
+
+<body>
+    <div class="container">
+        <label>請輸入數字：<input type="text" id="num1"></label>
+        <label>請輸入數字：<input type="text" id="num2"></label>
+        <button type="button" id="btn">送出</button>
+    </div>
+</body>
+<script>
+    const btnClick = document.getElementById("btn")
+
+    function gcd(n1, n2) {
+        n1 = parseInt(n1);
+        n2 = parseInt(n2);
+        if (n1 == 0 || n2 == 0)
+            return 0;
+
+        if (n1 < n2)
+            [n1, n2] = [n2, n1];
+        if (n1 % n2 == 0) {
+            return n2;
+        } else
+            return gcd(n2, n1 % n2);
+    } 
+
+    btnClick.addEventListener("click", () => {
+        let n1 = (num1.value);
+        let n2 = (num2.value);
+        let n3 = gcd(n1, n2);
+        if (n3 == 0)
+            alert(`數字 ${n1} 和 ${n2} 無公因數`);
+        else
+            alert(`數字 ${n1} 和 ${n2} 的最大公因數是 ${n3}`);
+    });
+</script>
+
+</html>
